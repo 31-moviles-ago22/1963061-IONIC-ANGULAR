@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -207,6 +207,23 @@ export class ArticuloDetalleComponent implements OnInit {
         this.articuloDetalle = this.articulos[i];
       }
     }
+
   }
 
+  carro : number = 0;
+  cantidad: number = 1;
+  
+  @Output() carroCopia: number = 0;
+
+  agregarCarrito(){
+    
+    let total = this.carro + this.cantidad;
+    this.carro = total;
+  }
+
+  seleccionarCantidad(ev: any){
+    this.cantidad = parseInt(ev.target.value);
+  }
+  
+  
 }

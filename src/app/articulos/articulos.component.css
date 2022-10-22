@@ -1,6 +1,8 @@
 ion-col {}
 
 ion-button {
+    --background: #5247ef;
+    --background-hover: #79009e;
     width: 100%;
 }
 

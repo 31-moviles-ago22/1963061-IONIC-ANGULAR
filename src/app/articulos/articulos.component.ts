@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ConditionalExpr } from '@angular/compiler';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-articulos',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./articulos.component.css']
 })
 export class ArticulosComponent implements OnInit {
+  @Input() product: any;
+  @Output() productAdded = new EventEmitter();
+  addProductToCart(articulo: any) {
 
+    console.log(articulo);
+    this.productAdded.emit(articulo);
+  }
   constructor() { }
 
   ngOnInit(): void {
@@ -16,8 +23,7 @@ export class ArticulosComponent implements OnInit {
       id: 1,
       nombre: "Mancuerna de metal", 
       imagen: 'assets/mancuerna.jpg',
-      precio: 299,
-      Review: ""
+      precio: 299
     
     },
     {
@@ -136,6 +142,9 @@ export class ArticulosComponent implements OnInit {
       precio: 99
     }
   ];
-}
+  
+  carro: number = 0;
 
+  //<div>{{ArticulosComponent.name}}</div><button (click)="addProductToCart(articulo)">+</button>
+}
 

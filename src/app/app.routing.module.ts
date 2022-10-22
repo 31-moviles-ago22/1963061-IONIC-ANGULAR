@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ArticulosComponent } from './articulos/articulos.component';
 
 import { ArticuloDetalleComponent } from './articulo-detalle/articulo-detalle.component';
+import { CarritongComponent } from './carritong/carritong.component';
 
 const rutas : Routes = [
     {
@@ -18,6 +19,10 @@ const rutas : Routes = [
         path: '',
         redirectTo: '/articulos', 
         pathMatch: 'full'
+    },
+    {
+        path: 'carritong',
+        component: CarritongComponent
     }
 ]
 

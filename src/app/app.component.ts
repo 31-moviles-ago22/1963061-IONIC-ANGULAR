@@ -8,3 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = '1963061-ionic-angular';
 }
+
+//addProductToCart(articulo: number) {
+  //this.cartProductList.push(artiuculo);
