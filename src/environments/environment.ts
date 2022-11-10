@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyDn70bvYj1nERp0_aG6KjKa9Dc1o0wn_Bs",
+    authDomain: "aps-moviless.firebaseapp.com",
+    projectId: "aps-moviless",
+    storageBucket: "aps-moviless.appspot.com",
+    messagingSenderId: "312868808788",
+    appId: "1:312868808788:web:baea61e045a92a4ddb65c1",
+    measurementId: "G-M18TVR6D93"
+  }
+
 };
 
 /*

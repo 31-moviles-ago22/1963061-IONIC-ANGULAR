@@ -1,5 +1,9 @@
-import { ConditionalExpr } from '@angular/compiler';
+
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AgregarCarritongService } from '../agregar-carritong.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable, of } from 'rxjs';
+import { Articulo } from '../articulo.model';
 
 @Component({
   selector: 'app-articulos',
@@ -7,17 +11,48 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./articulos.component.css']
 })
 export class ArticulosComponent implements OnInit {
-  @Input() product: any;
-  @Output() productAdded = new EventEmitter();
-  addProductToCart(articulo: any) {
+  observaVar = of(1, 2, 3); //Todos los valores por los que pasa esta variable
 
-    console.log(articulo);
-    this.productAdded.emit(articulo);
+  obserVaCambios  = {
+    next: (x: number) => {
+      console.log('Cambios en x ' +  x);
+    }
   }
-  constructor() { }
+
+
+
+
+  private coleccionFirebase: AngularFirestoreCollection<Articulo>;
+  articulosFirebase: Observable<Articulo[]>;
+  articuloDoc: any;
+
+
+  constructor(
+    private carritongService: AgregarCarritongService,
+    private aFirestore: AngularFirestore) 
+    
+    { 
+    this.coleccionFirebase = this.aFirestore.collection<Articulo>('articulos');
+    this.articulosFirebase = this.coleccionFirebase.valueChanges();
+    this.articuloDoc = this.aFirestore.doc<Articulo>('/articulos/sQ8SQkbXxb4iRc8ER2Zs');
+    }
+    articulosColeccionFb: Articulo[] = [];
 
   ngOnInit(): void {
+    console.log(this.coleccionFirebase.valueChanges({idField: 'id'}).subscribe(res => {
+      this.articulosColeccionFb = res;
+    }));
+    
+    this.articulosFirebase.subscribe(res => {
+      
+    })
   }
+
+  ngOnDestroy() {
+    this.articulosColeccionFb = [];
+   
+  }
+
   articulos: any = [
     {
       id: 1,
@@ -144,6 +179,14 @@ export class ArticulosComponent implements OnInit {
   ];
   
   carro: number = 0;
+  @Output() agregarAcarritong =  new EventEmitter();
+
+  agregarCarritong(articulo : any){
+    this.carro++;
+    this.agregarAcarritong.emit(this.carro);
+
+    this.carritongService.testService();
+  }
 
   //<div>{{ArticulosComponent.name}}</div><button (click)="addProductToCart(articulo)">+</button>
 }

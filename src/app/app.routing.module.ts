@@ -1,7 +1,6 @@
 import { Router, RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ArticulosComponent } from './articulos/articulos.component';
-
 import { ArticuloDetalleComponent } from './articulo-detalle/articulo-detalle.component';
 import { CarritongComponent } from './carritong/carritong.component';
 

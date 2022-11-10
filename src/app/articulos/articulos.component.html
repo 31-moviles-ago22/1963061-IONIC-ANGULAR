@@ -1,13 +1,15 @@
 <ion-grid>
     <ion-row>
         <ion-col>
-
-            <app-carrito [carrito]="carro" (productAdded)="addProductToCart($event)"></app-carrito>
+            <app-carrito [carrito]="carro"></app-carrito>
         </ion-col>
     </ion-row>
     <ion-row>
+        <div *ngFor="let articuloFirebase of articulosFirebase | async ">
+            {{articuloFirebase.nombre}} <br> {{articuloFirebase.precio}} <br>
+        </div>
 
-        <ion-col size="12" size-md="3" *ngFor="let articulo of articulos">
+        <ion-col size="12" size-md="3" *ngFor="let articulo of articulosColeccionFb">
             <ion-card>
                 <ion-card-header>
                     <p>{{articulo.nombre}}</p>
@@ -15,10 +17,11 @@
                 <ion-card-content>
 
                     <a [routerLink]="['/detalle', articulo.id]">
-                        <img [src]="articulo.imagen" alt="{{articulo.nombre}}">
+                        <img src="assets/imagenes/barra20.jpg" alt="">
+
                     </a>
                     <p class="precio">${{articulo.precio}}</p>
-                    <ion-button (click)="addProductToCart(articulo.id)">Agregar al Carrito</ion-button>
+                    <ion-button (click)="agregarCarritong(articulo)">Agregar al Carrito</ion-button>
                 </ion-card-content>
 
             </ion-card>
