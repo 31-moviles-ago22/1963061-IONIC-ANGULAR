@@ -1,8 +1,9 @@
 export interface Articulo{ 
-    id: string;
-    nombre: string;
-    precio: number;
+    id: number;
+    Nombre: string;
+    Precio: number;
     imagen: string;
+    reviews: string[];
   }
 
   export interface ArticuloDetalle{ 

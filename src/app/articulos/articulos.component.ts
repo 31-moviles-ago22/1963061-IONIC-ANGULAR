@@ -34,7 +34,7 @@ export class ArticulosComponent implements OnInit {
     { 
     this.coleccionFirebase = this.aFirestore.collection<Articulo>('articulos');
     this.articulosFirebase = this.coleccionFirebase.valueChanges();
-    this.articuloDoc = this.aFirestore.doc<Articulo>('/articulos/sQ8SQkbXxb4iRc8ER2Zs');
+    this.articuloDoc = this.aFirestore.doc<Articulo>('/articulos/id');
     }
     articulosColeccionFb: Articulo[] = [];
 
