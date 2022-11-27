@@ -10,7 +10,8 @@
 
                 <ion-card-content>
                     <p>{{ (articuloDetalle | async)?.nombre }}</p>
-                    <!--<ion-img [src]="articuloConsulta.imagen"></ion-img>-->
+                    <ion-img [src]=" (articuloDetalle | async)?.imagen "></ion-img>
+
 
                 </ion-card-content>
 

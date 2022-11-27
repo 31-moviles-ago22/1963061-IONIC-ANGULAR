@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { initializeApp } from "firebase/app";
 import { AngularFireModule } from '@angular/fire/compat';
-
+import { LoginComponent } from "./login/login.component";
 
 const app = initializeApp(environment.firebaseConfig);
 
@@ -21,7 +21,8 @@ const app = initializeApp(environment.firebaseConfig);
     EncabezadoComponent,
     ArticuloDetalleComponent,
     ArticulosComponent,
-    CarritongComponent
+    CarritongComponent,
+    LoginComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
