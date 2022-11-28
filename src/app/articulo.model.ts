@@ -11,3 +11,9 @@ export interface Articulo{
     precio: number;
     imagen: string;
   }
+
+  export interface Login{
+
+    email: string,
+    password: string;
+  }
