@@ -19,6 +19,8 @@ export class ArticuloDetalleComponent implements OnInit {
     private af: AngularFirestore, ) { 
 
       this.idArticulo =  this.ruta.snapshot.params['id'];
+
+      console.log(this.idArticulo);
       
       this.articuloConsulta = this.af.doc<ArticuloDetalle>(`/articulos/${this.idArticulo}`); 
 
@@ -27,7 +29,12 @@ export class ArticuloDetalleComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log(this.articuloConsulta);;
+    this.articuloConsulta.valueChanges().subscribe(res => {
+      console.log(res);
+    });
+    this.articuloConsulta.valueChanges().subscribe(res => {
+      console.log(res);
+    });
   }
 
   carro : number = 0;
