@@ -29,7 +29,13 @@ export class ArticuloDetalleComponent implements OnInit {
     this.articuloConsulta.valueChanges().subscribe(res => {
       console.log(res);
     });
+
     
+
+    this.articuloConsulta.valueChanges().subscribe(res => {
+      console.log(res);
+    });
+
   }
 
   carro : number = 0;
