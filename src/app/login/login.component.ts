@@ -1,5 +1,7 @@
 import { Inject } from "@angular/core";
 import { Component, OnInit,  Injectable  } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Event } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +9,13 @@ import { Component, OnInit,  Injectable  } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 
-@Injectable()
+
 export class LoginComponent  {
   
-  email: string;
-  password: string;
+  email: string = '';
+  password: string= '';
 
-  constructor (@Inject('EMAIL')email: string, @Inject('PASSWORD')password: string) {
-    this.email = email ?? '';
-    this.password = password ?? '';
+  constructor () {
     
   }
   login(){

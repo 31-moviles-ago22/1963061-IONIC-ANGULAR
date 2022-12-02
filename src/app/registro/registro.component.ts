@@ -1,5 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Inject } from "@angular/core";
+import { ActivatedRoute, Event } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -10,14 +11,12 @@ import { Inject } from "@angular/core";
 @Injectable()
 export class RegistroComponent  {
   
-  email: string;
-  password: string;
-  confirmpass: string;
+  email: string= '';
+  password: string= '';
+  confirmpass: string= '';
 
-  constructor (@Inject('EMAIL')email: string, @Inject('PASSWORD')password: string, @Inject('CONFIRMPASS')confirmpass: string) {
-    this.email = email ?? '';
-    this.password = password ?? '';
-    this.confirmpass = confirmpass ??'';
+  constructor () {
+    
     
   }
 

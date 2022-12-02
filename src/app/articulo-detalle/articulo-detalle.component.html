@@ -9,19 +9,17 @@
             <ion-card>
 
                 <ion-card-content>
-                    <p>{{ (articuloDetalle | async)?.nombre }}</p>
-                    <ion-img [src]=" (articuloDetalle | async)?.imagen "></ion-img>
+                    <p>{{ (articuloDetalle | async)?.Nombre }}</p>
+
+                    <ion-img [src]="(articuloDetalle | async)?.imagen"></ion-img>
 
 
                 </ion-card-content>
-
             </ion-card>
         </ion-col>
         <ion-col size="12" offset-md="1" size-md="2">
-
-            <h2>Comprar {{ (articuloDetalle | async)?.nombre }}</h2>
-            <p>${{ (articuloDetalle | async)?.precio }}</p>
-
+            <h2> {{ (articuloDetalle | async)?.Nombre }}</h2>
+            <p>${{ (articuloDetalle | async)?.Precio }}</p>
         </ion-col>
         <ion-col size="12" offset-md="1" size-md="2">
             <p>Entrega <strong>GRATIS</strong> hoy </p>
@@ -37,20 +35,19 @@
             <p>Vas a agregar<strong></strong></p>
             <ion-button shape="round" color="tertiary">
                 Agregar al carrito
-
             </ion-button>
             <ion-button shape="round" color="warning">
                 Comprar ya
-
             </ion-button>
         </ion-col>
     </ion-row>
     <ion-row>
         <ion-col>
             <h2>Reviews</h2>
-            <!-- <p class="review" *ngFor="let review of articuloDetalle.reviews">
-                {{review}}
-            </p>-->
+            <p>{{ (articuloDetalle | async)?.reviews }}</p>
+            <p>
+
+            </p>
         </ion-col>
     </ion-row>
 </ion-grid>
