@@ -8,21 +8,30 @@ import { Articulo, ArticuloDetalle } from '../articulo.model';
   templateUrl: './articulo-detalle.component.html',
   styleUrls: ['./articulo-detalle.component.css']
 })
+
 export class ArticuloDetalleComponent implements OnInit {
+
   private articuloConsulta : AngularFirestoreDocument<ArticuloDetalle>;
   idArticulo: string;
   articuloDetalle: Observable<ArticuloDetalle|undefined>;
-  constructor(private ruta: ActivatedRoute, 
-    private af: AngularFirestore, ) { 
 
+  //storage
+  meta : Observable<any>;
+
+  constructor(private ruta: ActivatedRoute,
+    private af: AngularFirestore, 
+    private storage : AngularFireStorage
+    ) { 
       this.idArticulo =  this.ruta.snapshot.params['id'];
-
-      console.log(this.idArticulo);
-
+      
       this.articuloConsulta = this.af.doc<ArticuloDetalle>(`/articulos/${this.idArticulo}`); 
 
      
       this.articuloDetalle = this.articuloConsulta.valueChanges();
+
+      //storage
+      const ref = this.storage.ref('articulos');
+      this.meta = ref.getMetadata();
     }
 
   ngOnInit(): void {

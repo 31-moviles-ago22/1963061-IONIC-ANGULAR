@@ -16,16 +16,16 @@ export class ArticulosComponent implements OnInit {
       console.log('Cambios en x ' +  x);
     }
   }
-  private coleccionFirebase: AngularFirestoreCollection<Articulo>;
-  articulosFirebase: Observable<Articulo[]>;
+ // private coleccionFirebase: AngularFirestoreCollection<Articulo>;
+ // articulosFirebase: Observable<Articulo[]>;
   articuloDoc: any;
   constructor(
     private carritongService: AgregarCarritongService,
     private aFirestore: AngularFirestore) 
 
     { 
-    this.coleccionFirebase = this.aFirestore.collection<Articulo>('articulos');
-    this.articulosFirebase = this.coleccionFirebase.valueChanges({idField: 'id'});
+    //this.coleccionFirebase = this.aFirestore.collection<Articulo>('articulos');
+    //this.articulosFirebase = this.coleccionFirebase.valueChanges({idField: 'id'});
 
 
     this.articuloDoc = this.aFirestore.doc<Articulo>('/articulos/id');
@@ -38,28 +38,21 @@ export class ArticulosComponent implements OnInit {
     articulosColeccionFb: Articulo[] = [];
 
   ngOnInit(): void {
-    console.log(this.coleccionFirebase.valueChanges({idField: 'id'}).subscribe(res => {
-      this.articulosColeccionFb = res;
-    }));
-    
-    this.articulosFirebase.subscribe(res => {
-      
-    })
-  }
-  ngOnDestroy() {
-    this.articulosColeccionFb = [];
-
-  }
-
-
-  carro: number = 0;
-  @Output() agregarAcarritong =  new EventEmitter();
-
-  agregarCarritong(articulo : any){
-    this.carro++;
-    this.agregarAcarritong.emit(this.carro);
-    this.carritongService.testService();
-  }
-  //<div>{{ArticulosComponent.name}}</div><button (click)="addProductToCart(articulo)">+</button>
+    porcentaje$ : Observable<number>;
+    progress : number | undefined;
+    subirFoto(event: any){
+      //Sube foto del input de File
+      const archivo: File = event.target.files[0];
+      console.log(archivo.name);
+  
+      const pathArchivo = `${archivo.name}` // ${this.articulo} // necesitamos un folder por articulo
+  
+  
+      const task = this.aFireStorage.upload(pathArchivo, archivo);
+  
+       task.percentageChanges().subscribe(res => {
+        this.progress = res;
+       });
+}
 }
 

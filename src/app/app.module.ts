@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { LoginComponent } from "./login/login.component";
 import { RegistroComponent } from "./registro/registro.component";
 import { HttpClientModule } from '@angular/common/http';
+
+
 const app = initializeApp(environment.firebaseConfig);
 
 @NgModule({
@@ -32,7 +34,9 @@ const app = initializeApp(environment.firebaseConfig);
     AppRoutingModule,
     FormsModule,
     IonicModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
